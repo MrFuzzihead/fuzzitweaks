@@ -1,0 +1,16 @@
+[
+{
+  "modid": "fuzzitweaks",
+  "name": "FuzziTweaks",
+  "description": "It does things",
+  "version": "1.0",
+  "mcversion": "1.7.10",
+  "url": "https://github.com/mrfuzzihead/fuzzitweaks",
+  "updateUrl": "",
+  "authorList": "MrFuzzihead",
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

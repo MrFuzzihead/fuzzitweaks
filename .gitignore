@@ -1,4 +1,3 @@
-.gradle
 **/build/
 !src/**/build/
 
@@ -14,8 +13,35 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
-# Eclipse Gradle plugin generated files
-# Eclipse Core
-.project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
+# Build directories
+/classes
+/logs
+/build
+/projects/*/logs
+/projects/*/build
+/buildSrc/build
+/out
+/buildSrc/out
+/jars
+/doc/out/
+/node_modules
+.jqwik-database
+
+# Runtime directories
+/run
+/projects/*/run
+
+*.ipr
+*.iws
+*.iml
+.idea
+.gradle
+*.DS_Store
+
+/.classpath
+/.project
+/.settings
+/.vscode
+*.launch
+
+/projects/*/src/generated/resources/.cache

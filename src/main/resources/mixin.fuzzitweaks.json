@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.6",
+  "package": "com.mrfuzzihead.fuzzitweaks.mixin",
+  "refmap": "mixin.fuzzitweaks.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "EntityLivingMixin",
+    "EntityMobMixin"
+  ]
+}
