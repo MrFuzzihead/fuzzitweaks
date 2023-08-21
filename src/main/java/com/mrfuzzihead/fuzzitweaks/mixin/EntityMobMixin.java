@@ -1,5 +1,6 @@
 package com.mrfuzzihead.fuzzitweaks.mixin;
 
+import com.mrfuzzihead.fuzzitweaks.handlers.ConfigurationHandler;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
@@ -10,8 +11,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(EntityMob.class)
-public abstract class EntityMobMixin extends EntityCreature implements IMob {
-    public EntityMobMixin(World p_i1602_1_) {
+public abstract class EntityMobMixin extends EntityCreature implements IMob
+{
+    public EntityMobMixin(World p_i1602_1_)
+    {
         super(p_i1602_1_);
         this.experienceValue = 5;
     }
@@ -21,7 +24,8 @@ public abstract class EntityMobMixin extends EntityCreature implements IMob {
      * @reason Bc I fucking wanted to
      */
     @Overwrite
-    protected boolean isValidLightLevel() {
+    protected boolean isValidLightLevel()
+    {
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.boundingBox.minY);
         int k = MathHelper.floor_double(this.posZ);
@@ -42,7 +46,7 @@ public abstract class EntityMobMixin extends EntityCreature implements IMob {
                 this.worldObj.skylightSubtracted = i1;
             }
 
-            return l <= this.rand.nextInt(1);
+            return l <= this.rand.nextInt(ConfigurationHandler.mobSpawnLightLevelCutoff);
         }
     }
 }

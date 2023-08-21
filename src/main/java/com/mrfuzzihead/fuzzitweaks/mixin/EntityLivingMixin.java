@@ -1,5 +1,6 @@
 package com.mrfuzzihead.fuzzitweaks.mixin;
 
+import com.mrfuzzihead.fuzzitweaks.handlers.ConfigurationHandler;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -12,8 +13,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityLiving.class)
-public abstract class EntityLivingMixin extends EntityLivingBase {
-
+public abstract class EntityLivingMixin extends EntityLivingBase
+{
     @Shadow private boolean persistenceRequired;
 
     @Shadow public abstract ItemStack getHeldItem();
@@ -25,15 +26,21 @@ public abstract class EntityLivingMixin extends EntityLivingBase {
     }
 
     @Inject(at = @At("TAIL"), method = "onLivingUpdate")
-    private void updatePersistanceStatus(CallbackInfo ci) {
-        if (this.getHeldItem() != null) {
-            if (!this.hasCustomNameTag())
-                this.persistenceRequired = false;
+    private void updatePersistanceStatus(CallbackInfo ci)
+    {
+        if (ConfigurationHandler.enableDespawnModule)
+        {
+            if (this.getHeldItem() != null)
+            {
+                if (!this.hasCustomNameTag())
+                    this.persistenceRequired = false;
+            }
         }
     }
 
     @Redirect(method = "despawnEntity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLiving;setDead()V"))
-    private void despawnCheck(EntityLiving instance) {
+    private void despawnCheck(EntityLiving instance)
+    {
         this.setDead();
     }
 }
