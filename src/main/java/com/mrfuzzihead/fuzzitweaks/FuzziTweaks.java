@@ -43,7 +43,7 @@ public final class FuzziTweaks
 
     public static final boolean enableDespawnModule = true;
 
-    public static int mobSpawnLightLevelCutoff = 1;
+    public static int maxMobSpawnLightLevel = 0;
 
     // Logging
     public static final Logger log = LogManager.getLogger(MODID);

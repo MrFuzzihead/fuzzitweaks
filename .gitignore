@@ -45,3 +45,4 @@ gradle-app.setting
 *.launch
 
 /projects/*/src/generated/resources/.cache
+/eclipse/

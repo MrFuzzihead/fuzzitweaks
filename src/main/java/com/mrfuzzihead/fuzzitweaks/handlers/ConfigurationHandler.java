@@ -13,7 +13,7 @@ public class ConfigurationHandler
 
     public static boolean enableDespawnModule = true;
 
-    public static int mobSpawnLightLevelCutoff = 1;
+    public static int maxMobSpawnLightLevel = 0;
 
     public static void init(String configDir)
     {
@@ -32,7 +32,7 @@ public class ConfigurationHandler
 
         enableDespawnModule = configuration.getBoolean("EnableDespawnModule", Configuration.CATEGORY_GENERAL, true, "Enable module that lets mobs holding items/armor despawn");
 
-        mobSpawnLightLevelCutoff = configuration.getInt("MobSpawnLightLevelCutoff", Configuration.CATEGORY_GENERAL, 1, 0, 16, "Light level that hostile mobs will no longer spawn at (0-16)");
+        maxMobSpawnLightLevel = configuration.getInt("MaxMobSpawnLightLevel", Configuration.CATEGORY_GENERAL, 0, 0, 15, "Highest light level that hostile mobs will spawn at (0-15)");
     }
 
     public static Configuration getConfiguration() {return configuration;}

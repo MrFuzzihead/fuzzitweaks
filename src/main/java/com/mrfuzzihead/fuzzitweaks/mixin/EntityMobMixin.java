@@ -21,7 +21,7 @@ public abstract class EntityMobMixin extends EntityCreature implements IMob
 
     /**
      * @author MrFuzzihead
-     * @reason Bc I fucking wanted to
+     * @reason Changing Minecraft hostile mob spawning in 1.7.10 to set valid light level as 0 only
      */
     @Overwrite
     protected boolean isValidLightLevel()
@@ -29,6 +29,7 @@ public abstract class EntityMobMixin extends EntityCreature implements IMob
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.boundingBox.minY);
         int k = MathHelper.floor_double(this.posZ);
+        int maxMobLightLevel = ConfigurationHandler.maxMobSpawnLightLevel;
 
         if (this.worldObj.getSavedLightValue(EnumSkyBlock.Sky, i, j, k) > this.rand.nextInt(32))
         {
@@ -46,7 +47,7 @@ public abstract class EntityMobMixin extends EntityCreature implements IMob
                 this.worldObj.skylightSubtracted = i1;
             }
 
-            return l <= this.rand.nextInt(ConfigurationHandler.mobSpawnLightLevelCutoff);
+            return l <= this.rand.nextInt(maxMobLightLevel + 1);
         }
     }
 }
